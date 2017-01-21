@@ -1,0 +1,12 @@
+.page-container {
+    padding: 6rem 3rem;
+    text-align: center;
+}
+
+.w3-quarter .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    ...
+}

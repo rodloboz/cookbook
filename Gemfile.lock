@@ -8,6 +8,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     byebug (9.0.6)
     coderay (1.1.1)
     debug_inspector (0.0.2)
@@ -26,6 +28,7 @@ GEM
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    sass (3.4.23)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -46,6 +49,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.1.1)
   pry-byebug
   sinatra
   sinatra-contrib
