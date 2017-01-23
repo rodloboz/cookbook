@@ -4,6 +4,7 @@ require "pry-byebug"
 require "better_errors"
 require "json"
 require "rest-client"
+require "uri"
 require_relative "cookbook"
 require_relative "recipe"
 require_relative "scrapper"
@@ -53,6 +54,8 @@ get '/import' do
 end
 
 get '/add' do
-  @name = params[:name]
-
+  @recipe = Recipe.new(params)
+  @cookbook = Cookbook.new('recipes.csv')
+  @cookbook.add_recipe(@recipe)
+  redirect '/'
 end

@@ -6,7 +6,9 @@
 
     <div class="w3-quarter">
       <%= img(recipe.img_url) %>
+      <a href=<%= URI.encode "http://localhost:4567/add?name=#{recipe.name}&time=#{recipe.time}&difficulty=#{recipe.difficulty}&img_url=#{recipe.img_url}"%>>
       <h3><%= recipe.name %></h3>
+      </a>
         <p>
         <i class="fa fa-clock-o" aria-hidden="true"></i>
         <%= recipe.time + ' | ' + recipe.difficulty.upcase %></p>
