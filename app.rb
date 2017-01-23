@@ -9,6 +9,8 @@ require_relative "cookbook"
 require_relative "recipe"
 require_relative "scrapper"
 
+# set :bind, '0.0.0.0'
+
 
 configure :development do
   use BetterErrors::Middleware
@@ -26,7 +28,6 @@ end
 # end
 
 get '/' do
-  content_type 'html'
   @cookbook = Cookbook.new('recipes.csv')
   @recipes = @cookbook.all
   erb :index
@@ -57,5 +58,17 @@ get '/add' do
   @recipe = Recipe.new(params)
   @cookbook = Cookbook.new('recipes.csv')
   @cookbook.add_recipe(@recipe)
+  redirect '/'
+end
+
+get '/delete' do
+  @cookbook = Cookbook.new('recipes.csv')
+  @recipes = @cookbook.all
+  erb :delete
+end
+
+get '/delete/recipe' do
+  @cookbook = Cookbook.new('recipes.csv')
+  @cookbook.remove_recipe(params[:img_url])
   redirect '/'
 end

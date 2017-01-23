@@ -14,8 +14,8 @@ class Cookbook
     save_to_csv
   end
 
-  def remove_recipe(recipe_id)
-    @recipes.delete_at(recipe_id)
+  def remove_recipe(img_url)
+    @recipes = @recipes.delete_if { |recipe| recipe.img_url == img_url }
     save_to_csv
   end
 
