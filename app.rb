@@ -5,11 +5,12 @@ require "better_errors"
 require "json"
 require "rest-client"
 require "uri"
+# set :bind, '0.0.0.0'
+
 require_relative "cookbook"
 require_relative "recipe"
 require_relative "scrapper"
 
-# set :bind, '0.0.0.0'
 
 
 configure :development do
