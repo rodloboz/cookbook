@@ -6,6 +6,7 @@ require "json"
 require "rest-client"
 require_relative "cookbook"
 require_relative "recipe"
+require_relative "scrapper"
 
 
 configure :development do
@@ -14,8 +15,8 @@ configure :development do
 end
 
 helpers do
-  def img(name)
-    "<img src='#{name}' style='width:100%'>"
+  def img(url)
+    "<img src='#{url}' style='width:100%'>"
   end
 end
 
@@ -42,11 +43,16 @@ get '/new' do
 end
 
 post '/import' do
-  @jamie = JamieOliver.new(keywords)
-  @search_results = jamie.search
-  redirect '/import'
+  @jamie = JamieOliver.new(params[:keywords])
+  @search_results = @jamie.search
+   erb :results
 end
 
 get '/import' do
   erb :import
+end
+
+get '/add' do
+  @name = params[:name]
+
 end

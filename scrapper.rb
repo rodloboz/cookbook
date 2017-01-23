@@ -17,7 +17,7 @@ class JamieOliver
         name: div.search('h2').text.strip,
         time: div.search('.time').text.strip,
         difficulty: div.search('.difficulty').text.strip,
-        img_url: div.search('.img-responsive')
+        img_url: div.at_css('img').attr('src')
       }
       results << Recipe.new(atributes)
     end
