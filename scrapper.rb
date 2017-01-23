@@ -5,17 +5,16 @@ class JamieOliver
 
   def initialize(keywords)
     @keywords = keywords.split(' ').join('+')
-    # @url = get_url
     @url = get_url
   end
 
   def search
     results = []
-    doc = Nokogiri::HTML(open(@url), nil, 'utf-8')
+    doc = Nokogiri::HTML(open(@url,
+    "User-Agent" => "Ruby/#{RUBY_VERSION}"), nil, 'utf-8')
     doc.search('.result.all.recipe').each do |div|
       atributes = {
         name: div.search('h2').text.strip,
-        description: '',
         time: div.search('.time').text.strip,
         difficulty: div.search('.difficulty').text.strip,
         img_url: div.search('.img-responsive')

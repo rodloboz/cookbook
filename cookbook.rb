@@ -29,10 +29,9 @@ class Cookbook
     CSV.foreach(@csv_file) do |row|
       atributes = {
           name: row[0],
-          description: row[1],
-          time: row[2],
-          difficulty: row[3],
-          img_url: row[4]
+          time: row[1],
+          difficulty: row[2],
+          img_url: row[3]
         }
       @recipes << Recipe.new(atributes)
     end
@@ -41,7 +40,7 @@ class Cookbook
   def save_to_csv
     CSV.open(@csv_file, 'wb') do |csv|
       @recipes.each do |recipe|
-        atributes = [recipe.name, recipe.description, recipe.time, recipe.difficulty, recipe.done, recipe.img_url]
+        atributes = [recipe.name, recipe.time, recipe.difficulty, recipe.img_url]
         csv << atributes
       end
     end

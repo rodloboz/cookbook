@@ -6,3 +6,5 @@ function w3_open() {
 function w3_close() {
     document.getElementById("mySidenav").style.display = "none";
 }
+
+

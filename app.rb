@@ -2,6 +2,8 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "pry-byebug"
 require "better_errors"
+require "json"
+require "rest-client"
 require_relative "cookbook"
 require_relative "recipe"
 
@@ -17,17 +19,34 @@ helpers do
   end
 end
 
+# before do
+#     content_type 'application/json'
+# end
+
 get '/' do
+  content_type 'html'
   @cookbook = Cookbook.new('recipes.csv')
   @recipes = @cookbook.all
   erb :index
 end
 
-get '/add_recipe' do
-  erb :add_recipe
+post '/new' do
+  @recipe = Recipe.new(params)
+  @cookbook = Cookbook.new('recipes.csv')
+  @cookbook.add_recipe(@recipe)
+  redirect '/'
 end
 
-get '/team/:username' do
-  puts params[:username]
-  "The username is #{params[:username]}"
+get '/new' do
+  erb :new
+end
+
+post '/import' do
+  @jamie = JamieOliver.new(keywords)
+  @search_results = jamie.search
+  redirect '/import'
+end
+
+get '/import' do
+  erb :import
 end
